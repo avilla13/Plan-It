@@ -58,3 +58,8 @@ nav > a {
 .login img {
   height: 30px;
 }
+
+.user-pic {
+  height: 100px;
+  border-radius: 50%;
+}
