@@ -3,8 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+const passport = require('passport');
 
 require('dotenv').config();
+// database connects AFTER the config variables are processed
+require('./config/database');
+require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -21,6 +26,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// express-session middleware
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+// pass req.user to all views using express' 'res.locals' obj
+// with this custom middleware function
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
