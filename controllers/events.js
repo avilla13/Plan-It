@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const User = require('../models/user');
 
 
 module.exports = {
@@ -12,7 +13,8 @@ async function create(req, res){
         if(req.body[key] === '') delete req.body[key];
     }
     try {
-        await Event.create(req.body);
+        const event = await Event.create(req.body);
+        console.log(event);
         res.redirect('/events');
     } catch (err) {
         console.log(err);

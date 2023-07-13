@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
     eventName: {
         type: String,
-        required: true
+       
     },
     date: {
         type: Date,
@@ -14,7 +14,7 @@ const eventSchema = new Schema({
     },
     place: {
         type: String,
-        required: true,
+        // required: true,
         default: 'TBD'
     },
     cost: {
