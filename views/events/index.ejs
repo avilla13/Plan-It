@@ -5,5 +5,30 @@
   <img class="user-pic" src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer"><br>
   <h2>Welcome <%= user.name %></h2><br>
 
+  <h2>Upcoming Events</h2>
+    <% if(events.eventName) { %>
+  <table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Place</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% events.forEach(e => { %>
+        <tr>
+            <td>INFO</td>
+            <td><%= e.eventName %></td>
+            <td><%= e.date %></td>
+            <td><%= e.place %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+  <% } else { %>
+    <h5>No Events Yet</h5>
+  <% } %>
 
 <%- include('../partials/footer') %>
