@@ -10,8 +10,13 @@ router.get('/', ensureLoggedIn, eventsCtrl.index);
 // GET/events/new
 router.get('/new', ensureLoggedIn, eventsCtrl.new);
 
+// GET/events/:id
+router.get('/:id', ensureLoggedIn, eventsCtrl.show);
+
+
 // POST/events
 router.post('/', ensureLoggedIn,eventsCtrl.create);
+
 
 
 module.exports = router;
