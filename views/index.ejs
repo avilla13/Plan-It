@@ -1,12 +1,8 @@
 <%- include('./partials/header') %>
 
-<!-- <h2>Home Page</h2> -->
-<% if(user) { %>
-  <img class="user-pic" src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer"><br>
-  <h2>Welcome <%= user.name %></h2><br>
-<% } else { %>
+
   <h2>Home Page</h2>
   <h3>Welcome to <%= title %></h3>
-<% } %>
+
 
 <%- include('./partials/footer') %>

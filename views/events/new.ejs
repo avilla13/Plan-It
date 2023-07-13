@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<h2>Enter New Event</h2>
+<div class="container">
+    <form action="/events" method="POST">
+        <label for="name">Event Name:
+            <input type="text" >
+        </label><br>
+        <label for="date">Date:
+            <input type="datetime-local" name="date" id="date">
+        </label><br>
+        <label for="place">Place: 
+            <input type="text">
+        </label><br>
+        <label for="cost">Cost:
+            <input type="number">
+        </label><br>
+        <label for="description">Description: 
+            <textarea name="description" id="event-desc"></textarea>
+        </label><br>
+        <button type="submit">Add Event</button>
+    </form>
+</div>
+
+
+<%- include('../partials/footer') %>
