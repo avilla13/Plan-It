@@ -4,16 +4,16 @@
 <div class="container">
     <form action="/events" method="POST">
         <label for="eventName">Event Name:
-            <input type="text" >
+            <input type="text" name="eventName">
         </label><br>
         <label for="date">Date:
             <input type="datetime-local" name="date" id="date">
         </label><br>
         <label for="place">Place: 
-            <input type="text">
+            <input type="text" name="place">
         </label><br>
         <label for="cost">Cost:
-            <input type="number">
+            <input type="number" name="cost">
         </label><br>
         <label for="description">Description: 
             <textarea name="description" id="event-desc"></textarea>

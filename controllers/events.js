@@ -8,7 +8,7 @@ module.exports = {
     create
 };
 
-async function create(req, res){
+async function create(req, res, next){
     for(let key in req.body){
         if(req.body[key] === '') delete req.body[key];
     }
@@ -18,7 +18,7 @@ async function create(req, res){
         res.redirect('/events');
     } catch (err) {
         console.log(err);
-        res.render('events/new', { title: 'Plan-It', errorMsg: err.message});
+        next(err);
     }
 }
 
