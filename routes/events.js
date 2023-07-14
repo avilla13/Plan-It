@@ -17,9 +17,9 @@ router.get('/:id', ensureLoggedIn, eventsCtrl.show);
 router.get('/:id/edit', ensureLoggedIn, eventsCtrl.edit);
 
 // POST/events
-router.post('/', ensureLoggedIn,eventsCtrl.create);
+router.post('/', ensureLoggedIn, eventsCtrl.create);
 
 // PUT/events/:id
-router.put('/:id', eventsCtrl.update);
+router.put('/:id', ensureLoggedIn, eventsCtrl.update);
 
 module.exports = router;

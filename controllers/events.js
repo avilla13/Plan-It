@@ -19,9 +19,11 @@ async function update (req, res, next) {
             if(event[key] !== req.body[key]){
                 event[key] = req.body[key];
             }
+            console.log(event[key]);
+            console.log(`req.body[${key}]= ${req.body[key]}`);
         }
         // Save the updated event
-        console.log(event);
+        console.log(`updated event: `, event);
         await event.save();
         res.redirect(`/events/${event._id}`);
     }
@@ -34,7 +36,7 @@ async function update (req, res, next) {
 async function edit (req, res) {
     try {
         const event = await Event.findById(req.params.id);
-        console.log(event);
+        // console.log(event);
         res.render('events/edit', {title: 'Edit Event', event});
     }
     catch (err) {
@@ -46,7 +48,7 @@ async function edit (req, res) {
 async function show(req, res) {
     try{
         const event = await Event.findById(req.params.id);
-        console.log(event);
+        
         res.render('events/show', {title: 'Event Deetz', event });
     }
     catch(err) {
@@ -63,7 +65,7 @@ async function create(req, res, next){
     try {
         const event = await Event.create(req.body);
         console.log(event);
-        res.redirect('/events'); // redirect to '/events/:id'
+        res.redirect(`/events/${event._id}`); // redirect to '/events/:id'
     } catch (err) {
         console.log(err);
         next(err);
