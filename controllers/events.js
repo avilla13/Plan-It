@@ -8,13 +8,24 @@ module.exports = {
     create,
     show,
     edit,
-    update
+    update,
+    delete: deleteEvent
 };
+
+async function deleteEvent(res, req) {
+    try {
+        const event = await Event.findByIdAndDelete(req.params.id);
+        res.redirect('/events');
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
 
 async function update (req, res, next) {
     try {
         const event = await Event.findById(req.params.id);
-        
+
         // Update only the changed properties
         for (let key in req.body) {
             if(event[key] !== req.body[key]){

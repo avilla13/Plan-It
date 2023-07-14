@@ -10,9 +10,11 @@
   <div>Description: </div><div><%= event.description %></div><br>
 </div>
 <br>
-<!-- <a href="/events/<%= event._id %>/edit" class="button">Edit</a> -->
-<button onclick="location.href='/events/<%= event._id %>/edit'">Edit</button>
+<a href="/events/<%= event._id %>/edit" class="button">Edit</a>
 
+<form action="/events/<%= event._id %>?_method=DELETE" method="POST">
+  <button type="submit">DELETE Event</button>
+</form>
 
 
 <%- include('../partials/footer') %>

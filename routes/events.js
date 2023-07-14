@@ -22,5 +22,7 @@ router.put('/:id', ensureLoggedIn, eventsCtrl.update);
 // POST/events
 router.post('/', ensureLoggedIn, eventsCtrl.create);
 
+// DELETE/events/:id
+router.delete('/:id', ensureLoggedIn, eventsCtrl.delete);
 
 module.exports = router;
