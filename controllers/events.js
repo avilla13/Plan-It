@@ -12,9 +12,10 @@ module.exports = {
     delete: deleteEvent
 };
 
-async function deleteEvent(res, req) {
+async function deleteEvent(req, res) {
     try {
-        const event = await Event.findByIdAndDelete(req.params.id);
+        console.log(req.params);
+        await Event.findByIdAndDelete(req.params.id);
         res.redirect('/events');
     }
     catch(err) {
