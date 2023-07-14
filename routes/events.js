@@ -16,10 +16,11 @@ router.get('/:id', ensureLoggedIn, eventsCtrl.show);
 // GET/events/:id/edit
 router.get('/:id/edit', ensureLoggedIn, eventsCtrl.edit);
 
+// PUT/events/:id
+router.put('/:id', ensureLoggedIn, eventsCtrl.update);
+
 // POST/events
 router.post('/', ensureLoggedIn, eventsCtrl.create);
 
-// PUT/events/:id
-router.put('/:id', ensureLoggedIn, eventsCtrl.update);
 
 module.exports = router;

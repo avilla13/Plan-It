@@ -2,7 +2,7 @@
 
 <h2><%= title %></h2>
 <div class="container">
-    <form action="/events/<%= event._id %>" method="POST">
+    <form action="/events/<%= event._id %>?_method=PUT" method="POST">
         <label >Event Name:
             <input type="text" name="eventName" value="<%= event.eventName %>">
         </label><br>

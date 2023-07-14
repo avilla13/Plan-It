@@ -14,6 +14,7 @@ module.exports = {
 async function update (req, res, next) {
     try {
         const event = await Event.findById(req.params.id);
+        
         // Update only the changed properties
         for (let key in req.body) {
             if(event[key] !== req.body[key]){
@@ -23,7 +24,7 @@ async function update (req, res, next) {
             console.log(`req.body[${key}]= ${req.body[key]}`);
         }
         // Save the updated event
-        console.log(`updated event: `, event);
+        console.log(`updated event: `, req.body);
         await event.save();
         res.redirect(`/events/${event._id}`);
     }
