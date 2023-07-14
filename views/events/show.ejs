@@ -9,6 +9,10 @@
   <div>Cost: </div><div><%= event.cost %></div><br>
   <div>Description: </div><div><%= event.description %></div><br>
 </div>
+<br>
+<!-- <a href="/events/<%= event._id %>/edit" class="button">Edit</a> -->
+<button onclick="location.href='/events/<%= event._id %>/edit'">Edit</button>
+
 
 
 <%- include('../partials/footer') %>

@@ -13,6 +13,8 @@ router.get('/new', ensureLoggedIn, eventsCtrl.new);
 // GET/events/:id
 router.get('/:id', ensureLoggedIn, eventsCtrl.show);
 
+// GET/events/:id/edit
+router.get('/:id/edit', ensureLoggedIn, eventsCtrl.edit);
 
 // POST/events
 router.post('/', ensureLoggedIn,eventsCtrl.create);

@@ -6,8 +6,21 @@ module.exports = {
     index,
     new: newEvent,
     create,
-    show
+    show,
+    edit
 };
+
+async function edit (req, res) {
+    try {
+        const event = await Event.findById(req.params.id);
+        console.log(event);
+        res.render('events/edit', {title: 'Edit Event', event});
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+}
 
 async function show(req, res) {
     try{
