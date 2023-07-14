@@ -7,8 +7,29 @@ module.exports = {
     new: newEvent,
     create,
     show,
-    edit
+    edit,
+    update
 };
+
+async function update (req, res, next) {
+    try {
+        const event = await Event.findById(req.params.id);
+        // Update only the changed properties
+        for (let key in req.body) {
+            if(event[key] !== req.body[key]){
+                event[key] = req.body[key];
+            }
+        }
+        // Save the updated event
+        console.log(event);
+        await event.save();
+        res.redirect(`/events/${event._id}`);
+    }
+    catch(err) {
+        console.log(err);
+        next(err);
+    }
+}
 
 async function edit (req, res) {
     try {
