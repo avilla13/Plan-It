@@ -10,11 +10,30 @@
   <div>Description: </div><div><%= event.description %></div><br>
 </div>
 <br>
-<a href="/events/<%= event._id %>/edit" class="button">Edit</a>
-
+<!-- <a href="/events/<%= event._id %>/edit" class="button">Edit</a> -->
+<button onclick="location.href='/events/<%= event._id %>/edit'">Edit</button>
 <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
   <button type="submit">DELETE Event</button>
 </form>
+<br><br>
+<h3>Comments</h3>
+<form action="/events/<%= event._id %>/comments" method="POST">
+  <input type="text" name="content">
+  <input type="submit" value="Add Comment">
+</form>
+<% if(event.comments.length){ %>
+  <div>
+    <% event.comments.forEach( (c) => { %>
+      <div><img src="<%= c.userAvatar %>" referrerpolicy="no-referrer" alt="avatar"> <%= c.userName %></div><br>
+      <div>
+        <%= c.content %>
+      </div>
+
+    <% }); %>
+  </div>
+<%} else{ %>
+
+<% } %>
 
 
 <%- include('../partials/footer') %>
