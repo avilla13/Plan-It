@@ -8,7 +8,7 @@ module.exports = {
 async function deleteEvent(req, res) {
     const event = await Event.findOne({'comments._id': req.params.id, 'comments.user': req.user._id});
 
-    console.log('event object contains the following: ',event);
+    // console.log('event object contains the following: ',event);
     // Remove the comment (mongoose array method)
     event.comments.remove(req.params.id);
     // Save to update the event document
@@ -20,7 +20,7 @@ async function deleteEvent(req, res) {
 
 async function create(req, res) {
     const event = await Event.findById(req.params.id);
-    // user-centric info to req.body (new comment)
+    // user-centric info to req.body (i.e. new comment)
     req.body.user = req.user._id;
     req.body.userName = req.user.name;
     req.body.userAvatar = req.user.avatar;
@@ -29,7 +29,7 @@ async function create(req, res) {
     try{
         // save any changes made to event doc
         await event.save();
-        console.log(event);
+        // console.log(event);
     }
     catch(err){
         console.log(err);
