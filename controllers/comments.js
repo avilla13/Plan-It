@@ -8,7 +8,14 @@ module.exports = {
 async function deleteEvent(req, res) {
     const event = await Event.findOne({'comments._id': req.params.id, 'comments.user': req.user._id});
 
-    console.log(event);
+    console.log('event object contains the following: ',event);
+    // Remove the comment (mongoose array method)
+    event.comments.remove(req.params.id);
+    // Save to update the event document
+    await event.save();
+    // Redirect back to event's show view
+    res.redirect(`/events/${event._id}`);
+
 };
 
 async function create(req, res) {

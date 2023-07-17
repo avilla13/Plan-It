@@ -28,9 +28,11 @@
         <div><img src="<%= c.userAvatar %>" referrerpolicy="no-referrer" alt="avatar"> <%= c.userName %></div><br>
         <div>
           <%= c.content %>
+          <% if(user?._id.equals(c.user)) {%>
           <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
             <button type="submit"> x </button>
           </form>
+          <% } %>
         </div>
   
       <% }); %>
