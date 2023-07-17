@@ -22,14 +22,19 @@
   <input type="submit" value="Add Comment">
 </form>
 <% if(event.comments.length){ %>
-  <div>
-    <% event.comments.forEach( (c) => { %>
-      <div><img src="<%= c.userAvatar %>" referrerpolicy="no-referrer" alt="avatar"> <%= c.userName %></div><br>
-      <div>
-        <%= c.content %>
-      </div>
-
-    <% }); %>
+  <div class="container">
+    <div>
+      <% event.comments.forEach( (c) => { %>
+        <div><img src="<%= c.userAvatar %>" referrerpolicy="no-referrer" alt="avatar"> <%= c.userName %></div><br>
+        <div>
+          <%= c.content %>
+          <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+            <button type="submit"> x </button>
+          </form>
+        </div>
+  
+      <% }); %>
+    </div>
   </div>
 <%} else{ %>
 

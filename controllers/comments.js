@@ -1,7 +1,14 @@
 const Event = require('../models/event');
 
 module.exports = {
-    create
+    create,
+    delete: deleteEvent
+};
+
+async function deleteEvent(req, res) {
+    const event = await Event.findOne({'comments._id': req.params.id, 'comments.user': req.user._id});
+
+    console.log(event);
 };
 
 async function create(req, res) {

@@ -40,10 +40,10 @@ const eventSchema = new Schema({
         type: String
     },
     comments: [commentSchema],
-    // createdBy: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'User',
-    // }
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    }
 }, {
     timestamps: true
 });
