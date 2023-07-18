@@ -51,7 +51,7 @@ const eventSchema = new Schema({
     },
     image: {
         type: String, // Assume the image will be stored as a URL or file path
-        default:'https://www.belfercenter.org/themes/belfer/images/event-default-img-med.png'
+        default:'/images/event-default1.png'
     }
 }, {
     timestamps: true

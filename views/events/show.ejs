@@ -1,56 +1,64 @@
 <%- include('../partials/header') %>
 
-<div class="container-fluid">
-  <h2><%= event.eventName %> Details</h2>
+<div class="container-fluid mt-3" >
+  <h2 class="text-center"><%= event.eventName %> Details</h2>
   <div class="card">
-    <img src="https://www.belfercenter.org/themes/belfer/images/event-default-img-med.png" class="card-img-top" alt="Event Image">
+    <img src="/images/event-default1.png" class="card-img-top img-fluid" alt="Event Image">
     <div class="card-body">
       <p class="card-text">Date: <%= event.date.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) %></p>
       <p class="card-text">Time: <%= event.date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit' }) %></p>
       <p class="card-text">Location: <%= event.place %></p>
       <p class="card-text">Cost: <%= event.cost %></p>
-      <div class="form-group">
-        <label for="description">Event Info:</label>
-        <textarea class="form-control mb-1" id="event-info" rows="4">
-          <%= event.description %>
-        </textarea>
-      </div>
+      <p class="card-text">Event Info: <br><%= event.description %></p>
       <!-- if(user?._id.equals(event.createdBy)) { -->
       <% if(user) {%>
-      <button onclick="location.href='/events/<%= event._id %>/edit'" class="btn btn-primary" id="edit-btn">Edit</button>
-      <!-- <button class="btn btn-danger" id="delete-btn">Delete</button> -->
+      <button onclick="location.href='/events/<%= event._id %>/edit'" class="btn btn-primary btn-sm" id="edit-btn">Edit</button>
       <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
-          <button type="submit" class="btn btn-danger" id="delete-btn">Delete</button>
+          <button type="submit" class="btn btn-danger btn-sm mt-3" id="delete-btn">Delete</button>
       </form>
     </div>
   </div>
       <% } %>
-<br><br>
-<h3>Comments</h3>
-<form action="/events/<%= event._id %>/comments" method="POST">
-  <input type="text" name="content">
-  <input type="submit" value="Add Comment">
-</form>
-<% if(event.comments.length){ %>
-  <div class="comment">
-    <div>
+      <!-- comments section beginning -->
+<div class="card mt-0 mb-5">
+  <div class="card-body">
+    <h5 class="card-title">Comments</h5>
+    <ul class="list-group list-group-flush" id="comment-list">
+      <% if(event.comments.length){ %>
       <% event.comments.forEach( (c) => { %>
-        <div><img src="<%= c.userAvatar %>" referrerpolicy="no-referrer" alt="avatar"> <%= c.userName %></div><br>
-        <div>
-          <%= c.content %>
-          <% if(user?._id.equals(c.user)) {%>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-start align-items-center">
+          <img src="<%= c.userAvatar %>" class="rounded-circle mr-5" alt="user avatar" width="35" height="35">
+          <div>
+            <p class="mb-0 p-2"><%= c.content %></p>
+            <small><%= c.userName %></small>
+          </div>
+        </div>
+
+        <% if(user?._id.equals(c.user)) {%>
           <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
-            <button type="submit"> x </button>
+            <button type="submit" class="btn btn-danger btn-sm"> Delete </button>
           </form>
           <% } %>
-        </div>
-  
+      </li>
       <% }); %>
+      <% } else{ %>
+          <li class="list-group-item">
+              <div class="d-flex justify-content-start align-items-center">
+                  <p class="mb-0 p-2">No event comments yet</p> 
+              </div>
+          </li>
+      <% } %>
+    <div class="form-group">
+      <form action="/events/<%= event._id %>/comments" method="POST">
+        <textarea class="form-control" id="comment-input" rows="2" name="content" placeholder="Add a comment"></textarea>
+        <button class="btn btn-primary " id="add-comment-btn">Add Comment</button>
+      </form>
     </div>
-  </div>
-<%} else{ %>
-
-<% } %>
+  </div>        
+  </ul>
+</div>
+<!-- comments end  -->
 
 
 <%- include('../partials/footer') %>
