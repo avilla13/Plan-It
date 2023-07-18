@@ -29,11 +29,12 @@ const eventSchema = new Schema({
     date: {
         type: Date,
         required: true,
-        default: moment().format('lll')
+        default: moment().format('lll'),
+        index: true // Allows for date sorting/querying
     },
     place: {
         type: String,
-        // required: true,
+        required: true,
         default: 'TBD'
     },
     cost: {
@@ -53,7 +54,7 @@ const eventSchema = new Schema({
         }
     },
     image: {
-        type: String, // Assume the image will be stored as a URL or file path
+        type: String, // Images will be stored as a URL/file path 
         default:'/images/event-default1.png'
     }
 }, {

@@ -7,13 +7,18 @@
             <input type="text" name="eventName" value="<%= event.eventName %>">
         </label><br>
         <label >Date:
-            <input type="datetime-local" name="date" value="<%= event.date %>" >
+            <input type="datetime-local" name="date" value="<%= event.formattedDate %>" >
         </label><br>
         <label >Place: 
             <input type="text" name="place" value="<%= event.place %>">
         </label><br>
         <label >Cost:
-            <input type="number" name="cost" value="<%= event.cost %>">
+            <select name="cost">
+                <option value="Free">Free</option>
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+            </select>
         </label><br>
         <label >Description: 
             <textarea name="description" id="event-desc" ><%= event.description %></textarea>

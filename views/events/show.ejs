@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<div class="container-fluid mt-3" >
+<div class="container-fluid mt-3" style="max-width: 60%;">
   <h2 class="text-center"><%= event.eventName %> Details</h2>
   <div class="card">
     <img src="/images/event-default1.png" class="card-img-top img-fluid" alt="Event Image">
@@ -10,8 +10,8 @@
       <p class="card-text">Location: <%= event.place %></p>
       <p class="card-text">Cost: <%= event.cost %></p>
       <p class="card-text">Event Info: <br><%= event.description %></p>
-      <!-- if(user?._id.equals(event.createdBy)) { -->
-      <% if(user) {%>
+      <% if(user?._id.equals(event.createdBy)) { %>
+      <!-- < if(user) { > -->
       <button onclick="location.href='/events/<%= event._id %>/edit'" class="btn btn-primary btn-sm" id="edit-btn">Edit</button>
       <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
           <button type="submit" class="btn btn-danger btn-sm mt-3" id="delete-btn">Delete</button>

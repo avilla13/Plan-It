@@ -24,6 +24,30 @@ Click on the following link to open the heroku deployment for the app:
 10. After you've verified all fields to the best of your knowledge, select the 'Add Event'. Congratulations on creating your first Plan-It event!
 11. You can head back to the events home page (HOME) to see that your event has been added to the list.
 
+## Code
+```js
+async function update (req, res, next) {
+    try {
+        const event = await Event.findById(req.params.id);
+
+        // Update only the changed properties
+        for (let key in req.body) {
+            if(event[key] !== req.body[key]){
+                event[key] = req.body[key];
+            }
+        }
+        // Save the updated event
+        console.log(`updated event: `, req.body);
+        await event.save();
+        res.redirect(`/events/${event._id}`);
+    }
+    catch(err) {
+        console.log(err);
+        next(err);
+    }
+}
+```
+
 ## Technologies
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 

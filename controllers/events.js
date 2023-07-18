@@ -14,7 +14,7 @@ module.exports = {
 
 async function deleteEvent(req, res) {
     try {
-        console.log(req.params);
+        console.log(req.params, req.params.eventName);
         await Event.findByIdAndDelete(req.params.id);
         res.redirect('/events');
     }
@@ -32,8 +32,6 @@ async function update (req, res, next) {
             if(event[key] !== req.body[key]){
                 event[key] = req.body[key];
             }
-            console.log(event[key]);
-            console.log(`req.body[${key}]= ${req.body[key]}`);
         }
         // Save the updated event
         console.log(`updated event: `, req.body);
@@ -92,7 +90,7 @@ function newEvent(req, res) {
 
 async function index(req, res) {
     const events = await Event.find({});
-    const creator = await User.findById(events.createdBy);
-    console.log(creator);
-    res.render('events/index', { title: 'User Events', events, creator });
+    // const creator = await User.findById(events.createdBy);
+    // console.log(creator);
+    res.render('events/index', { title: 'User Events', events });
 }
