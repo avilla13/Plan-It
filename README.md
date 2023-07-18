@@ -24,7 +24,7 @@ Click on the following link to open the heroku deployment for the app:
 10. After you've verified all fields to the best of your knowledge, select the 'Add Event'. Congratulations on creating your first Plan-It event!
 11. You can head back to the events home page (HOME) to see that your event has been added to the list.
 
-## Code
+## Code Snips
 ```js
 async function update (req, res, next) {
     try {

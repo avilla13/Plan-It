@@ -1,8 +1,40 @@
 <%- include('./partials/header') %>
+    
+<!-- 'Hero' Section -->
+<section class="hero mt-3 mb-5">
+  <div class="container text-center">
+      <h1>Welcome to <%= title %></h1>
+      <h5>Where Events Come to Life</h5>
+  </div>
+</section>
 
-  <h1><%= title %></h1>
-  <h2>Home Page</h2>
-  <h3>Welcome to <%= title %></h3>
-
+<!-- Features Section -->
+<section id="features" class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature">
+                   
+                    <h3>Discover Events</h3>
+                    <p>Explore a wide range of events that will be tailored to your interests and location.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature">
+                    
+                    <h3>Organize and Participate</h3>
+                    <p>Manage your own events and check out exciting activities.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature">
+              
+                    <h3>Connect and Collaborate</h3>
+                    <p>Interact with fellow event enthusiasts, collaborate, and make lasting memories together.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <%- include('./partials/footer') %>
