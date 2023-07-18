@@ -46,6 +46,22 @@ async function update (req, res, next) {
         next(err);
     }
 }
+
+async function create(req, res, next){
+    req.body.description = req.body.description.trim();
+    for(let key in req.body){
+        if(req.body[key] === '') delete req.body[key];
+    }
+    try {
+        const user = req.user;
+        const event = await Event.create({ ...req.body, createdBy: user._id});
+        console.log(event, user);
+        res.redirect(`/events/${event._id}`); 
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+}
 ```
 
 ## Technologies
