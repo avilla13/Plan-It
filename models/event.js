@@ -1,6 +1,7 @@
 // models/event.js
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const moment = require('moment');
 
 const commentSchema = new Schema( {
     content: {
@@ -26,7 +27,8 @@ const eventSchema = new Schema({
     },
     date: {
         type: Date,
-        required: true
+        required: true,
+        default: moment().format('lll')
     },
     place: {
         type: String,
@@ -43,6 +45,10 @@ const eventSchema = new Schema({
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
+    },
+    image: {
+        type: String, // Assume the image will be stored as a URL or file path
+        default:'https://www.belfercenter.org/themes/belfer/images/event-default-img-med.png'
     }
 }, {
     timestamps: true
