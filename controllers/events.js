@@ -1,6 +1,6 @@
 const Event = require('../models/event');
 const User = require('../models/user');
-
+const moment = require('moment');
 
 module.exports = {
     index,
@@ -61,12 +61,10 @@ async function edit (req, res) {
 async function show(req, res) {
     try{
         const event = await Event.findById(req.params.id);
-        
-        res.render('events/show', {title: 'Event Deetz', event });
+        res.render('events/show', {title: `${event.eventName} Details`, event });
     }
     catch(err) {
         console.log(err);
-        
     }
 }
 
@@ -78,7 +76,7 @@ async function create(req, res, next){
     try {
         const event = await Event.create(req.body);
         console.log(event);
-        res.redirect(`/events/${event._id}`); // redirect to '/events/:id'
+        res.redirect(`/events/${event._id}`); 
     } catch (err) {
         console.log(err);
         next(err);
@@ -93,5 +91,6 @@ function newEvent(req, res) {
 
 async function index(req, res) {
     const events = await Event.find({});
+    
     res.render('events/index', { title: 'User Events', events });
 }

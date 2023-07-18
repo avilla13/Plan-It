@@ -1,13 +1,13 @@
 <%- include('../partials/header') %>
 
 <h2><%= event.eventName %> Details</h2>
-<div class="">
-  <!-- <div>Event: </div><div><%= event.eventName %></div><br> -->
+<div class="container-fluid">
+  
   <div>Date: </div><div><%= event.date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit' }) %> 
     <%= event.date.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) %></div><br>
-  <div>Place: </div><div><%= event.place %></div><br>
+  <div>Location: </div><div><%= event.place %></div><br>
   <div>Cost: </div><div><%= event.cost %></div><br>
-  <div>Description: </div><div><%= event.description %></div><br>
+  <div>Event Info: </div><div><%= event.description %></div><br>
 </div>
 <br>
 <% if(user?._id.equals(event.user)) {%>

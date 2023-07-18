@@ -1,34 +1,44 @@
 <%- include('../partials/header') %>
 
 
+<div class="text-center mt-5">
+  <img src="<%= user.avatar %>" class="border rounded border-info mb-2" alt="avatar" referrerpolicy="no-referrer">
+  <h3>Welcome <%= user.name %></h3><br>
+</div>
 
-  <img class="user-pic" src="<%= user.avatar %>" alt="avatar" referrerpolicy="no-referrer"><br>
-  <h2>Welcome <%= user.name %></h2><br>
-
+<div class="container text-center">
   <h2>Upcoming Events</h2>
-    <% if(events.length) { %>
-  <table>
-    <thead>
-        <tr>
-            <th></th>
-            <th>Event</th>
-            <th>Date</th>
-            <th>Place</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% events.forEach(e => { %>
-        <tr>
-            <td><a href="/events/<%= e._id %>"> INFO </a></td>
-            <td><%= e.eventName %></td>
-            <td><%= e.date %></td>
-            <td><%= e.place %></td>
-        </tr>
-        <% }); %>
-    </tbody>
-  </table>
-  <% } else { %>
-    <h4>No Events Yet</h4>
-  <% } %>
+  <div class="row">
+      <div class="col">
+        <% if(events.length) { %>
+          <table class="table mt-1">
+              <thead>
+                <tr>
+                  <th scope="col">Event</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Created By</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% events.forEach(e => { %>
+                <tr>
+                  <th scope="row"><a href="/events/<%= e._id %>"><%= e.eventName %> </a></th>
+                  <td><%= e.date %></td>
+                  <td><%= e.place %></td>
+                  <td><%= e.createdBy %></td>
+                </tr>
+                <% }); %>
+                <% } else { %>
+                <tr>
+                  <th scope="row">No Events Yet</th>
+                  <td colspan="2"></td>
+                  <td></td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+      </div>
+
 
 <%- include('../partials/footer') %>
