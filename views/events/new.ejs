@@ -13,9 +13,14 @@
             <input type="text" name="place">
         </label><br>
         <label >Cost:
-            <input type="number" name="cost">
+            <select name="cost">
+                <option value="Free">Free</option>
+                <option value="$">$</option>
+                <option value="$$">$$</option>
+                <option value="$$$">$$$</option>
+            </select>
         </label><br>
-        <label >Description: 
+        <label >Event Info: 
             <textarea name="description" id="event-desc"></textarea>
         </label><br>
         <button type="submit">Add Event</button>

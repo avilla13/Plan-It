@@ -1,6 +1,7 @@
 // models/event.js
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const User = require('../models/user');
 const moment = require('moment');
 
 const commentSchema = new Schema( {
@@ -36,7 +37,9 @@ const eventSchema = new Schema({
         default: 'TBD'
     },
     cost: {
-        type: Number
+        type: String,
+        enum: ['Free', '$', '$$', '$$$'],
+        default: 'Free'
     },
     description: {
         type: String

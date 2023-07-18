@@ -9,6 +9,7 @@
 <div class="container text-center">
   <h2>Upcoming Events</h2>
   <div class="row">
+      
       <div class="col">
         <% if(events.length) { %>
           <table class="table mt-1">
@@ -26,6 +27,7 @@
                   <th scope="row"><a href="/events/<%= e._id %>"><%= e.eventName %> </a></th>
                   <td><%= e.date %></td>
                   <td><%= e.place %></td>
+                  <% %>
                   <td><%= e.createdBy %></td>
                 </tr>
                 <% }); %>

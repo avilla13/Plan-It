@@ -74,8 +74,9 @@ async function create(req, res, next){
         if(req.body[key] === '') delete req.body[key];
     }
     try {
-        const event = await Event.create(req.body);
-        console.log(event);
+        const user = req.user;
+        const event = await Event.create({ ...req.body, createdBy: user._id});
+        console.log(event, user);
         res.redirect(`/events/${event._id}`); 
     } catch (err) {
         console.log(err);
@@ -91,6 +92,7 @@ function newEvent(req, res) {
 
 async function index(req, res) {
     const events = await Event.find({});
-    
-    res.render('events/index', { title: 'User Events', events });
+    const creator = await User.findById(events.createdBy);
+    console.log(creator);
+    res.render('events/index', { title: 'User Events', events, creator });
 }
