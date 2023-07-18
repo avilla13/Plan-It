@@ -1,31 +1,35 @@
 <%- include('../partials/header') %>
 
-<h2>Enter New Event</h2>
-<div class="container">
+<div class="container-fluid mt-5" style="max-width: 60%">
+    <h2>Enter New Event</h2>
     <form action="/events" method="POST">
-        <label >Event Name:
-            <input type="text" name="eventName">
-        </label><br>
-        <label >Date:
-            <input type="datetime-local" name="date" >
-        </label><br>
-        <label >Place: 
-            <input type="text" name="place">
-        </label><br>
-        <label >Cost:
-            <select name="cost">
+        <div class="mb-3">
+            <label class="form-label">Event Name</label>
+            <input type="text" class="form-control" name="eventName" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input type="datetime-local" class="form-control" name="date" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Place</label>
+            <input type="text" class="form-control" name="place">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cost</label>
+            <select class="form-select" name="cost">
                 <option value="Free">Free</option>
                 <option value="$">$</option>
                 <option value="$$">$$</option>
                 <option value="$$$">$$$</option>
             </select>
-        </label><br>
-        <label >Event Info: 
-            <textarea name="description" id="event-desc"></textarea>
-        </label><br>
-        <button type="submit">Add Event</button>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Event Info</label>
+            <textarea class="form-control" name="description" id="event-desc"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Event</button>
     </form>
 </div>
-
 
 <%- include('../partials/footer') %>
