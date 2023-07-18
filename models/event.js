@@ -28,7 +28,7 @@ const eventSchema = new Schema({
     date: {
         type: Date,
         required: true,
-        // default: moment().format('lll')
+        default: moment().format('lll')
     },
     place: {
         type: String,

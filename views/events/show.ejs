@@ -1,21 +1,30 @@
 <%- include('../partials/header') %>
 
-<h2><%= event.eventName %> Details</h2>
 <div class="container-fluid">
-  
-  <div>Date: </div><div><%= event.date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit' }) %> 
-    <%= event.date.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) %></div><br>
-  <div>Location: </div><div><%= event.place %></div><br>
-  <div>Cost: </div><div><%= event.cost %></div><br>
-  <div>Event Info: </div><div><%= event.description %></div><br>
-</div>
-<br>
-<% if(user?._id.equals(event.user)) {%>
-<button onclick="location.href='/events/<%= event._id %>/edit'">Edit</button>
-<form action="/events/<%= event._id %>?_method=DELETE" method="POST">
-  <button type="submit">DELETE Event</button>
-</form>
-<% } %>
+  <h2><%= event.eventName %> Details</h2>
+  <div class="card">
+    <img src="https://www.belfercenter.org/themes/belfer/images/event-default-img-med.png" class="card-img-top" alt="Event Image">
+    <div class="card-body">
+      <p class="card-text">Date: <%= event.date.toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'}) %></p>
+      <p class="card-text">Time: <%= event.date.toLocaleTimeString([], {hour: 'numeric', minute: '2-digit' }) %></p>
+      <p class="card-text">Location: <%= event.place %></p>
+      <p class="card-text">Cost: <%= event.cost %></p>
+      <div class="form-group">
+        <label for="description">Event Info:</label>
+        <textarea class="form-control mb-1" id="event-info" rows="4">
+          <%= event.description %>
+        </textarea>
+      </div>
+      <!-- if(user?._id.equals(event.createdBy)) { -->
+      <% if(user) {%>
+      <button onclick="location.href='/events/<%= event._id %>/edit'" class="btn btn-primary" id="edit-btn">Edit</button>
+      <!-- <button class="btn btn-danger" id="delete-btn">Delete</button> -->
+      <form action="/events/<%= event._id %>?_method=DELETE" method="POST">
+          <button type="submit" class="btn btn-danger" id="delete-btn">Delete</button>
+      </form>
+    </div>
+  </div>
+      <% } %>
 <br><br>
 <h3>Comments</h3>
 <form action="/events/<%= event._id %>/comments" method="POST">
