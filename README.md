@@ -2,9 +2,10 @@
 ### Bring Your Event to Life
 Plan-It is an event planning web app designed to simplify the process of organizing and managing events. At its MVP stage, it allows users to create, view, update, and delete events. Users can explore and engage with other users' events by viewing event details and communicating their ideas/feedback by leaving comments. 
 
+![home snippet](public/images/snippets/home1.png)
+
 The app aims to evolve into a platform where users can not only manage events but also invite others to join and RSVP. It will facilitate collaboration and social interaction by enabling event organizers to invite participants and track their responses. Additionally, Plan-It will help users discover nearby events that align with their interests, such as beach workouts or other activities open to participation. By bringing events to life, the app aims to enhance event planning experiences and foster community engagement.
 
-![index snippet]()
 
 ## Getting Started
 ### Live Link:
@@ -13,16 +14,32 @@ Click on the following link to open the heroku deployment for the app:
 
 ### How to Use Plan-It
 1. First step is to sign in with your Google Account by clicking on the 'Log In' button or Google Icon in top right of navbar.
-2. After loggin-in, you'll be directed to the events home page where you'll notice 'Upcoming Events' heading and a list of the events below it.
+   
+   ![index snippet](public/images/snippets/landing1.png)
+2. After logging-in, you'll be directed to the events home page where you'll notice 'Upcoming Events' heading and a list of the events below it.
+
+    ![home snippet](public/images/snippets/home1.png)
+
 3. You can click on the event name that you'd like to check out more info on.
 4. At the event's details page, you can read some more info about the event and check out the event's comments to see what other people are saying about that event.
+   
+   ![show snippet](public/images/snippets/show-event1.png)
+
 5. If you'd like to leave a comment, feel free to do so. Don't worry you can always delete it afterwards you wish.
 6. If this is your event, you can edit or delete it you'd like.
 7. If you want to go back to the events home page, click on the 'HOME' link in the navbar.
 8. If you'd like to create your own event, click on the 'EVENTS' dropdown link and then select the 'ADD EVENT' link.
-9. Fill out the proper fields for your event. One thing to note, the cost refers to the estimated amount for EACH PERSON/ATTENDEE.
+   
+   ![new-event snippet](public/images/snippets/new-event1.png)
+
+9.  Fill out the proper fields for your event. One thing to note, the cost refers to the estimated amount for EACH PERSON/ATTENDEE.
+    
+    ![new-event2 snippet](public/images/snippets/new-event2.png)
+
 10. After you've verified all fields to the best of your knowledge, select the 'Add Event'. Congratulations on creating your first Plan-It event!
 11. You can head back to the events home page (HOME) to see that your event has been added to the list.
+    
+    ![home2 snippet](public/images/snippets/home2.png)
 
 ## Code Snips
 ```js
